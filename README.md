@@ -2,10 +2,6 @@
 
 Nothing too serious here.
 
-[]: # Language: markdown
-[]: # Path: README.md
-[]: # hosted?
-
 ## Functionality of the App
 
 - User Authentication ( Signup, no authentication, no login)
