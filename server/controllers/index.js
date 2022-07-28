@@ -56,6 +56,7 @@ const getUser = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const { users } = res.locals;
+
     if (!users.length) {
       return res.status(200).json({ message: "No users found", users });
     }

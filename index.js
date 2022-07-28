@@ -4,7 +4,6 @@ const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const routes = require("./server/routes");
-// const swaggerDocument = require("./swagger.json");
 
 const swaggerDefinition = {
   openapi: "3.0.0",
@@ -22,7 +21,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "http://localhost:8085/api/v1",
+      url: "http://localhost:8085",
       description: "Development server",
     },
   ],
@@ -30,13 +29,6 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  // definition: {
-  //   openapi: "3.0.0",
-  //   info: {
-  //     title: "Hello World",
-  //     version: "1.0.0",
-  //   },
-  // },
   apis: ["./server/routes/*.js"], // Path to the API docs
 };
 
@@ -44,7 +36,14 @@ const openapiSpecification = swaggerJsdoc(options);
 const app = express();
 
 app.use(express.json());
-app.use("/api/v1/", routes);
+
+app.get("/", (_req, res) =>
+  res.status(200).json({
+    message: "Welcome to the chimoney test API endpoints.",
+  })
+);
+
+app.use(routes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 app.listen(8085, () => console.log("Server started"));

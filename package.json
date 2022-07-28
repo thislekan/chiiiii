@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "YARN_PRODUCTION=false && rm -rf dist && rm -rf node_modules && yarn install && babel server -d dist --extensions \".js\"",
     "start": "node index.js",
     "start-dev": "babel-watch index.js --extensions \".js\"",
     "migrate:db": "sequelize db:migrate"
