@@ -87,7 +87,7 @@ app.put(`${apiVersion}signup`, createNewUser, getCreatedUser);
 /**
  * @swagger
  *
- * /api/v1/users?username:
+ * /api/v1/users/{username}:
  *   get:
  *     summary: This is the get user route to get a user usinf the userId
  *     description: Returns a single user
@@ -136,7 +136,7 @@ app.put(`${apiVersion}signup`, createNewUser, getCreatedUser);
  *                      example: "123456789"
  *                      required: true
  */
-app.get(`${apiVersion}users?username`, findUserByUserNameOrId, getUser);
+app.get(`${apiVersion}users/:username`, findUserByUserNameOrId, getUser);
 
 /**
  * @swagger

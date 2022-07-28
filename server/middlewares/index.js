@@ -13,7 +13,7 @@ const { findUser } = require("../helper/index");
  */
 const findUserByUserNameOrId = async (req, res, next) => {
   try {
-    const { username, id } = req.query;
+    const { username, id } = req.params;
     if (!username && !id) {
       return res.status(400).json({
         message: `Please provide a username or id.`,
