@@ -40,4 +40,17 @@ Start the development server and get cracking
 
 ```
 yarn start-dev
+
+```
+
+## Check out the API documentation
+
+- after you have started the server, you can check out the API documentation
+- go to `http://localhost:8085/api-docs`
+- you will see the API documentation with the endpoints and their descriptions
+- play around the swagger UI to see how the API works
+- Note, the error responses are not documented in the API documentation
+
+```
+
 ```
