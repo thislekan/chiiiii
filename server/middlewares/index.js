@@ -61,6 +61,7 @@ const createNewUser = async (req, res, next) => {
 
     if (user) {
       newOrUpdatedUser = { ...user, address, age, email };
+      res.locals.message = `User ${username} updated successfully.`;
     } else {
       const id = uuidv4();
       const storedUser = AppStore.getItem("users") || JSON.stringify([]);

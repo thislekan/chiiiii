@@ -7,7 +7,8 @@
  */
 const getCreatedUser = async (req, res) => {
   try {
-    const { user, errorMsg } = res.locals;
+    const { username } = req.body;
+    const { user, errorMsg, message } = res.locals;
 
     if (errorMsg) {
       return res.status(401).json({ message: errorMsg });
@@ -16,6 +17,11 @@ const getCreatedUser = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "Unable to create new user." });
     }
+
+    if (message === `User ${username} updated successfully.`) {
+      return res.status(200).json({ user });
+    }
+
     return res.status(201).json({ user });
   } catch (error) {
     console.error(error);

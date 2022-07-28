@@ -76,33 +76,18 @@ const apiVersion = "/api/v1/";
  *       - Create or Update Requests
  *     summary: This is the signup route
  *     description: Creates or Updates a user and return the user object
+ *     parameters:
+ *       - in: header
+ *         name: id
+ *         description: id of the user (simulates JWT token. for updating users)
+ *         required: false
+ *         type: string
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               username:
- *                 type: string
- *                 example: "chimoney"
- *                 description: The username of the user
- *                 required: true
- *               age:
- *                 type: number
- *                 example: 25
- *                 description: The age of the user
- *                 required: false
- *               address:
- *                 type: string
- *                 example: "123 Main St"
- *                 description: The address of the user
- *                 required: false
- *               email:
- *                 type: string
- *                 example: "m@me.co"
- *                 description: The email of the user
- *                 required: false
+ *             $ref: '#/components/schemas/UserInput'
  *     responses:
  *       201:
  *         description: User created successfully
