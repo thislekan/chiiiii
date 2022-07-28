@@ -158,9 +158,7 @@ app.get(`${apiVersion}users/:username`, findUserByUserNameOrId, getUser);
  *                 users:
  *                   type: array
  *                   items:
- *                     type: object
- *                     properties:
- *                       $ref: '#/components/schemas/UserResponse'
+ *                     $ref: '#/components/schemas/UserResponse'
  */
 app.get(`${apiVersion}users`, fetchAllUsers, getUsers);
 
