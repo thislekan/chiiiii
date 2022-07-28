@@ -1,3 +1,61 @@
+/**
+ * @swagger
+ *
+ *   components:
+ *     schemas:
+ *       UserResponse:
+ *         type: object
+ *         properties:
+ *           username:
+ *             type: string
+ *             description: username of the user
+ *             example: "chimoney"
+ *             required: true
+ *           address:
+ *             type: string
+ *             description: address of the user
+ *             example: "123 Main St"
+ *             required: false
+ *           email:
+ *             type: string
+ *             description: email of the user
+ *             example: "chi@money.no"
+ *             required: false
+ *           age:
+ *             type: number
+ *             description: age of the user
+ *             example: 30
+ *             required: false
+ *           id:
+ *             type: string
+ *             description: id of the user
+ *             example: "123456789"
+ *             required: true
+ *       UserInput:
+ *         type: object
+ *         properties:
+ *           username:
+ *             type: string
+ *             example: "chimoney"
+ *             description: The username of the user
+ *             required: true
+ *           age:
+ *             type: number
+ *             example: 25
+ *             description: The age of the user
+ *             required: false
+ *           address:
+ *             type: string
+ *             example: "123 Main St"
+ *             description: The address of the user
+ *             required: false
+ *           email:
+ *             type: string
+ *             example: "m@me.co"
+ *             description: The email of the user
+ *             required: false
+ */
+
 const express = require("express");
 const { getCreatedUser, getUser, getUsers } = require("../controllers/index");
 const {
@@ -54,33 +112,16 @@ const apiVersion = "/api/v1/";
  *                type: object
  *                properties:
  *                  user:
- *                    type: object
- *                    properties:
- *                      username:
- *                        type: string
- *                        description: username of the user
- *                        example: "chimoney"
- *                        required: true
- *                      address:
- *                        type: string
- *                        description: address of the user
- *                        example: "123 Main St"
- *                        required: false
- *                      email:
- *                        type: string
- *                        description: email of the user
- *                        example: "chi@money.no"
- *                        required: false
- *                      age:
- *                        type: number
- *                        description: age of the user
- *                        example: 30
- *                        required: false
- *                      id:
- *                        type: string
- *                        description: id of the user
- *                        example: "123456789"
- *                        required: true
+ *                    $ref: '#/components/schemas/UserResponse'
+ *       200:
+ *         description: User updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   $ref: '#/components/schemas/UserResponse'
  */
 app.put(`${apiVersion}signup`, createNewUser, getCreatedUser);
 
@@ -108,33 +149,7 @@ app.put(`${apiVersion}signup`, createNewUser, getCreatedUser);
  *              type: object
  *              properties:
  *                user:
- *                  type: object
- *                  properties:
- *                    username:
- *                      type: string
- *                      description: username of the user
- *                      example: "chimoney"
- *                      required: true
- *                    address:
- *                      type: string
- *                      description: address of the user
- *                      example: "123 Main St"
- *                      required: false
- *                    email:
- *                      type: string
- *                      description: email of the user
- *                      example: "a@b.c"
- *                      required: false
- *                    age:
- *                      type: number
- *                      description: age of the user
- *                      example: 30
- *                      required: false
- *                    id:
- *                      type: string
- *                      description: id of the user
- *                      example: "123456789"
- *                      required: true
+ *                  $ref: '#/components/schemas/UserResponse'
  */
 app.get(`${apiVersion}users/:username`, findUserByUserNameOrId, getUser);
 
@@ -160,31 +175,7 @@ app.get(`${apiVersion}users/:username`, findUserByUserNameOrId, getUser);
  *                   items:
  *                     type: object
  *                     properties:
- *                       username:
- *                         type: string
- *                         description: username of the user
- *                         example: "chimoney"
- *                         required: true
- *                       address:
- *                          type: string
- *                          description: address of the user
- *                          example: "123 Main St"
- *                          required: false
- *                       email:
- *                          type: string
- *                          description: email of the user
- *                          example: "chi@money.no"
- *                          required: false
- *                       age:
- *                          type: number
- *                          description: age of the user
- *                          example: 30
- *                          required: false
- *                       id:
- *                          type: string
- *                          description: id of the user
- *                          example: "123456789"
- *                          required: true
+ *                       $ref: '#/components/schemas/UserResponse'
  */
 app.get(`${apiVersion}users`, fetchAllUsers, getUsers);
 
